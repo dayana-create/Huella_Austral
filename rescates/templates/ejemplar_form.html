@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {% if object %}Editar {{ object.nombre }}{% else %}Registrar ejemplar{% endif %} | Huella Austral
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-md-8 col-lg-6">
+    <div class="card shadow-sm">
+      <div class="card-header bg-white py-3">
+        <h1 class="h4 mb-0">
+          {% if object %}Editar ejemplar{% else %}Registrar ejemplar{% endif %}
+        </h1>
+      </div>
+
+      <form method="post" class="card-body" novalidate>
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+          <div class="alert alert-danger py-2 small" role="alert">
+            {% for error in form.non_field_errors %}
+              <div>{{ error }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% for campo in form %}
+          <div class="mb-3">
+            {% if campo.field.widget.input_type == 'checkbox' %}
+              <div class="form-check">
+                {{ campo }}
+                <label class="form-check-label" for="{{ campo.id_for_label }}">{{ campo.label }}</label>
+              </div>
+            {% else %}
+              <label class="form-label" for="{{ campo.id_for_label }}">{{ campo.label }}</label>
+              {{ campo }}
+            {% endif %}
+
+            {% if campo.help_text %}
+              <div class="form-text">{{ campo.help_text }}</div>
+            {% endif %}
+
+            {% for error in campo.errors %}
+              <div class="text-danger small mt-1">{{ error }}</div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+
+        <div class="d-flex gap-2 pt-2 border-top">
+          <button type="submit" class="btn btn-success">Guardar</button>
+          <a href="{% if object %}{% url 'rescate:detalle' object.pk %}{% else %}{% url 'rescate:lista' %}{% endif %}" class="btn btn-outline-secondary">
+            Cancelar
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

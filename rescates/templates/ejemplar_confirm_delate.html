@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Eliminar {{ ejemplar.nombre }} | Huella Austral{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-md-8 col-lg-6">
+    <div class="card border-danger shadow-sm">
+      <div class="card-header bg-danger-subtle border-danger text-danger-emphasis py-3">
+        <h1 class="h5 mb-0">Confirmar eliminación</h1>
+      </div>
+
+      <div class="card-body">
+        <p class="mb-2">
+          ¿Estás seguro de que quieres eliminar a <strong>{{ ejemplar.nombre }}</strong> ({{ ejemplar.especie.nombre }})?
+        </p>
+        <p class="text-muted small mb-0">
+          Esta acción es permanente y eliminará todo el historial asociado en el sistema.
+        </p>
+      </div>
+
+      <div class="card-footer bg-white d-flex gap-2">
+        <a href="{% url 'rescate:detalle' ejemplar.pk %}" class="btn btn-outline-secondary btn-sm">Cancelar</a>
+        <form method="post" class="ms-auto">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger btn-sm">Sí, eliminar ejemplar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

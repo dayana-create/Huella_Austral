@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ ejemplar.nombre }} | Huella Austral{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-8">
+    <div class="card shadow-sm">
+      <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+        <h1 class="h4 mb-0">{{ ejemplar.nombre }}</h1>
+        {% if ejemplar.liberado %}
+          <span class="badge bg-success">Liberado</span>
+        {% else %}
+          <span class="badge bg-warning text-dark">En recuperación</span>
+        {% endif %}
+      </div>
+
+      <div class="card-body">
+        <dl class="row mb-0">
+          <dt class="col-sm-4 text-muted">Especie</dt>
+          <dd class="col-sm-8">{{ ejemplar.especie.nombre }}</dd>
+
+          <dt class="col-sm-4 text-muted">Peso</dt>
+          <dd class="col-sm-8">{{ ejemplar.peso_kg }} kg</dd>
+
+          <dt class="col-sm-4 text-muted">Fecha de ingreso</dt>
+          <dd class="col-sm-8 mb-0">{{ ejemplar.fecha_ingreso|date:"d/m/Y" }}</dd>
+        </dl>
+      </div>
+
+      <div class="card-footer bg-white d-flex gap-2">
+        <a href="{% url 'rescate:lista' %}" class="btn btn-outline-secondary btn-sm">Volver</a>
+        <div class="ms-auto d-flex gap-2">
+          <a href="{% url 'rescate:editar' ejemplar.pk %}" class="btn btn-success btn-sm">Editar</a>
+          <a href="{% url 'rescate:eliminar' ejemplar.pk %}" class="btn btn-outline-danger btn-sm">Eliminar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
