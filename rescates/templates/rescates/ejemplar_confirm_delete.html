@@ -20,7 +20,7 @@
       </div>
 
       <div class="card-footer bg-white d-flex gap-2">
-        <a href="{% url 'rescate:detalle' ejemplar.pk %}" class="btn btn-outline-secondary btn-sm">Cancelar</a>
+        <a href="{% url 'rescates:detalle' ejemplar.pk %}" class="btn btn-outline-secondary btn-sm">Cancelar</a>
         <form method="post" class="ms-auto">
           {% csrf_token %}
           <button type="submit" class="btn btn-danger btn-sm">Sí, eliminar ejemplar</button>

@@ -29,10 +29,10 @@
       </div>
 
       <div class="card-footer bg-white d-flex gap-2">
-        <a href="{% url 'rescate:lista' %}" class="btn btn-outline-secondary btn-sm">Volver</a>
+        <a href="{% url 'rescates:lista' %}" class="btn btn-outline-secondary btn-sm">Volver</a>
         <div class="ms-auto d-flex gap-2">
-          <a href="{% url 'rescate:editar' ejemplar.pk %}" class="btn btn-success btn-sm">Editar</a>
-          <a href="{% url 'rescate:eliminar' ejemplar.pk %}" class="btn btn-outline-danger btn-sm">Eliminar</a>
+          <a href="{% url 'rescates:editar' ejemplar.pk %}" class="btn btn-success btn-sm">Editar</a>
+          <a href="{% url 'rescates:eliminar' ejemplar.pk %}" class="btn btn-outline-danger btn-sm">Eliminar</a>
         </div>
       </div>
     </div>

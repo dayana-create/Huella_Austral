@@ -32,9 +32,9 @@
         </div>
 
         <div class="card-footer bg-white border-top-0 pt-0 d-flex gap-2">
-          <a href="{% url 'rescate:detalle' e.pk %}" class="btn btn-outline-success btn-sm flex-fill">Ver</a>
-          <a href="{% url 'rescate:editar' e.pk %}" class="btn btn-outline-secondary btn-sm">Editar</a>
-          <a href="{% url 'rescate:eliminar' e.pk %}" class="btn btn-outline-danger btn-sm">Eliminar</a>
+          <a href="{% url 'rescates:detalle' e.pk %}" class="btn btn-outline-success btn-sm flex-fill">Ver</a>
+          <a href="{% url 'rescates:editar' e.pk %}" class="btn btn-outline-secondary btn-sm">Editar</a>
+          <a href="{% url 'rescates:eliminar' e.pk %}" class="btn btn-outline-danger btn-sm">Eliminar</a>
         </div>
       </div>
     </div>
@@ -42,7 +42,7 @@
     <div class="col-12">
       <div class="alert alert-light border text-center py-4" role="alert">
         <p class="text-muted mb-2">Aún no hay ejemplares registrados en el sistema.</p>
-        <a href="{% url 'rescate:crear' %}" class="btn btn-success btn-sm">+ Registrar primer ejemplar</a>
+        <a href="{% url 'rescates:crear' %}" class="btn btn-success btn-sm">+ Registrar primer ejemplar</a>
       </div>
     </div>
   {% endfor %}
